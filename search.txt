@@ -1,0 +1,28 @@
+SqlDataReader DataReader = Command.ExecuteReader();
+if (DataReader.HasRows)
+{
+int id;
+string name;
+int price;
+string descrip;
+string IsActive;
+while (DataReader.Read())
+{
+id = DataReader.GetInt32(0);
+name = DataReader.GetString(1);
+price= DataReader.GetInt32(2);
+descrip= DataReader.GetString(3);
+IsActive= DataReader.GetString(4);
+ 
+
+ 
+
+Console.WriteLine($"{id}\t{name}\t{price}\t{descrip}\t{IsActive}");
+}
+}
+else
+{
+Console.WriteLine("No records in table");
+}
+DataReader.Close();
+ 
