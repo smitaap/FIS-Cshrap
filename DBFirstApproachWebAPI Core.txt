@@ -1,0 +1,31 @@
+Add Nuget Packages
+1.Entity Framework Core
+2. Core SQL
+3. Core Tools
+
+1. PM Console:
+Scaffold-DbContext "Scaffold-DbContext "Server=.;Database=LTI937;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir LTIModel
+;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir LTIModel
+
+enable-migrations
+update--database
+
+2. In appsettings.json:
+ "ConnectionStrings": {
+      "DefaultConnection": "Server=.;Database=Organization;Trusted_Connection=True;"
+    },
+
+3. Startup.cs
+ services.AddDbContext<OrganizationContext>(options =>
+       options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx
+
+https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-strings
+
+4. services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+
+5. app.UseCors(options => options.AllowAnyOrigin());
